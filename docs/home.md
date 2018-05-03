@@ -109,7 +109,7 @@ Support for more credit card processors such as BrainTree and Square is coming s
 A source with `"rail": "lightrail"` means the value is stored in Lightrail and is represented by a ValueStore object.  
 
 **ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as ValueStores. The way a ValueStore is referenced in `sources` depends its `access` property. This defines how it is accessed and is the second property in the `sources` object. There are four values:  
-1. **`customerId`:** Value is attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating `Customers`). This will cause the `orders` endpoint to consider all ValueStores associated with that customer and will resolve the complexity of applying them to the order in the correct order.     
+1. **`customerId`:** Value is attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating Customers). This will cause the `orders` endpoint to consider all ValueStores associated with that customer and will resolve the complexity of applying them in the correct order.     
 2. **`secureCode`:** A unique-unguessable code and is most commonly used by gift cards and unique promotion codes.  
 3. **`publicCode`:** Usually a human-readable code like `EASYMONEY` which is displayed to many users. 
 4. **`valueStoreId`:** Directly refers to a ValueStore.
