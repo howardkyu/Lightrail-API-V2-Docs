@@ -9,35 +9,27 @@ Like all other Lightrail value, accounts are backed by `ValueStores`.
 ### Getting Started with Accounts
 To get started with accounts, you first need to create a `Program` which defines the default parameters for you accounts.
 
-#### Creating a Program
+#### Creating a Program for your Accounts
 The `Program` will define the basic properties like currency for the accounts (`ValueStores`) that will be created from it. 
-Below are the required and optional attributes needed for creating a `Program` for an account or a loyalty points use-case.   
 
-Creating an account `Program`. Note, typically Programs are created through the app (coming soon!). 
+Create your Account Program through the Lightrail web-app [here](https://www.lightrail.com) (web-app not yet complete).
+Once the `Program` has been created you'll supply the `programId` into requests to create `Accounts`.  
 
-`POST https://api.lightrail.com/v2/programs`
+### Creating an Account through the API
+If no `Customer` exists, you first need to create one to associate the `Account` with.
+
+Request to create `Customer`.
+`POST https://api.lightrail.com/v2/customers`
 ```json
 {
-    "programId": "customer-accounts-usd",
-    "currency": "USD",
-    "access": "customerId",
-    "name": "Accounts USD",
-    "tags": ["accounts-usd"]
+    "customerId": "cus_123",
+    "email": "alice@examle.com"
 }
-``` 
+```
 
-#### Attributes
-Below is the list of attributes used when creating an Account Program.
- - **programId** (_required_): Unique idempotent ID for the Program.
- - **currency** (_required_): Currency code. Can be a standard ISO form such as USD or CAD but can also be any branded currency, eg: `megabucks`.
- - **access** (_required_): Always use value `customerId` for creating account programs. This means the ValueStores must be attached to a Customer.  
- - **name** (_optional_): A human-readable name for the Program.
- - **tags** (_optional_): Segmentation tags.
- - **metadata** (_optional_): Arbitrary data associated with the Program.
+Remember, `Accounts` are just a `ValueStore` with certain properties defined by the `Program` they belong to. As such, you'll create `Accounts` through the `/valueStores` endpoint. 
 
-### Creating an Account
-Request to create an account.  
-
+Request to create `Account`.  
 `POST https://api.lightrail.com/v2/valueStores`
 ```json
 {
