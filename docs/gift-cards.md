@@ -13,7 +13,7 @@ Create your Account Program through the Lightrail web-app [here](https://www.lig
 Once the Program has been created you'll supply the `programId` into requests to create a Gift Card.  
 
 #### Issuing a Gift Card
-Creating Gift Cards is easy. Below is the call to do this. 
+How to create Gift Cards. 
 
 `POST https://api.lightrail.com/v2/valueStores`
 ```json
@@ -25,7 +25,7 @@ Creating Gift Cards is easy. Below is the call to do this.
 ``` 
 
 ### Common Requests  
-Below are the most common requests made when interacting with Gift Cards.
+The following sections are the most common requests made when interacting with Gift Cards.
 
 #### Retrieve Gift Code
 The unique code that's generated for a Gift Card must be retrieved via the following endpoint. It is not returned with the Gift Card (`ValueStore`) for security purposes.

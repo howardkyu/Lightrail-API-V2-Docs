@@ -43,7 +43,7 @@ You can see `lineItems` contains the basic shopping cart information.
 Also, note the `sources` property in the request. It includes three sources, two of which are value stored in Lightrail, the other is a tokenized card from Stripe.
 
 - `"customerId": "cus_123"`: uses any value associated with that customer in Lightrail. 
-- `"code: "EASYMONEY"`: represents the promotion code entered during checkout.
+- `"publicCode: "EASYMONEY"`: represents the promotion code entered during checkout.
 - `"cardToken": "tok_12345"`: tokenized card using Stripe elements.  
  
 **Response**: `200 OK`
@@ -110,19 +110,19 @@ A source with `"rail": "lightrail"` means the value is stored in Lightrail and i
 
 **ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as ValueStores. ValueStores are created from a template called Programs.
 
-**Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines it's rules. For example, a Gift Card Program might determine that the currency is USD and that all cards must be between $0-1000. The ValueStore would be a Gift Card with a unique code to access it. Programs also determine how ValueStores are accessed.  
+**Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines its rules. For example, a Gift Card Program might determine that the currency is USD and that all cards must be between $0-1000. The ValueStore would be a Gift Card with a unique code to access it. Programs also determine how ValueStores are accessed.  
 
-The way a ValueStore is referenced in `sources` depends its `access` property. This defines how it is accessed and is the second property in the `sources` object. There are four values:  
+The way a ValueStore is referenced in `sources` depends its `access` property. This defines how it is accessed and is the second property in the `sources` object. The values are:  
  
- 1. **`customerId`:** Value is attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating Customers). This will cause the `orders` endpoint to consider all ValueStores associated with that customer and will resolve the complexity of applying them in the correct order.  
+ - **`customerId`:** Value is attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating Customers). This will cause the `orders` endpoint to consider all ValueStores associated with that customer and will resolve the complexity of applying them in the correct order.  
  
- 2. **`secureCode`:** A unique-unguessable code and is most commonly used by gift cards and unique promotion codes.     
+ - **`secureCode`:** A unique-unguessable code and is most commonly used by gift cards and unique promotion codes.     
  
- 3. **`publicCode`:** Usually a human-readable code like `EASYMONEY` which is displayed to many users.  
+ - **`publicCode`:** Usually a human-readable code like `EASYMONEY` which is displayed to many users.  
  
- 4. **`valueStoreId`:** Directly refers to a ValueStore.    
+ - **`valueStoreId`:** Directly refers to a ValueStore.    
 
-Usage:
+Example usage with `customerId`:
 ```json
 {
     "rail": "lightrail",
