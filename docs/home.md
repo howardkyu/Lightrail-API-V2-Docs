@@ -110,7 +110,7 @@ A source with `"rail": "lightrail"` means the value is stored in Lightrail. Valu
 
 The way ValueStores are passed into the `sources` property of the order depends on the `access` property of the ValueStore. There are four different `access` types:  
 
-**`customerId`:** Some value may be attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating `Customers`).
+**1. `customerId`:** Some value may be attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating `Customers`).
 For example account credits or promotions are commonly attached directly to a Customer. 
 
 Usage:
@@ -123,7 +123,7 @@ Usage:
 
 This will cause the `orders` endpoint to consider all ValueStores associated with that customer and will resolve the complexity of applying them to the order in the correct order. 
 
-**`secureCode`:** A `secureCode` is a unique-unguessable code and is most commonly used by gift cards and unique promotion codes. 
+**2. `secureCode`:** A unique-unguessable code and is most commonly used by gift cards and unique promotion codes. 
 
 Usage:
 ```json
@@ -133,7 +133,7 @@ Usage:
 }
 ``` 
 
-**`publicCode`:** A `publicCode` is usually a human-readable code like `EASYMONEY` which would be displayed through various channels (ads, etc) to many users.
+**3. `publicCode`:** Usually a human-readable code like `EASYMONEY` which is displayed to many users. 
 
 Usage:
 ```json
@@ -143,7 +143,7 @@ Usage:
 }
 ```
 
-**`valueStoreId`:** Using `valueStoreId` directly refers to a single ValueStore.
+**4. `valueStoreId`:** Directly refers to a single ValueStore.
 
 Usage:
 ```json
