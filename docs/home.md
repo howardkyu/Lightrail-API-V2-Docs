@@ -103,6 +103,8 @@ A source consists of an object with a `rail` identifier along with some addition
 
 Support for more credit card processors such as BrainTree and Square is coming soon.
 
+----
+
 #### Rail: Lightrail
 A source with `"rail": "lightrail"` means the value is stored in Lightrail. Value stored in Lightrail is represented by a ValueStore object.  
 
@@ -152,6 +154,8 @@ Usage:
     "valueStoreId": "vs_123"
 }
 ```
+
+----
 
 #### Rail: Stripe
 The `"rail": "stripe"` is used when payment from a credit card is required for the `order`. 
