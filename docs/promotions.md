@@ -14,7 +14,7 @@ See below for concrete examples for each type of promotion.
 
 ### Getting Started with Promotions
 To get started with Promotions, you first need to create a Promotion Program which defines the type of promotion you wish to create.
-Promotion Programs are created within your Lightrail Account and specify details such as value and currency, along with some additonal properties.
+Promotion Programs are created within your Lightrail Account and specify details such as value and currency.
 
 #### 1. Personalized Promotion Attached to a Customer
 In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Personalized Customer Promotion". 
