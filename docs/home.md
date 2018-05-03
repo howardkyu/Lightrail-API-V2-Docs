@@ -113,6 +113,7 @@ A source with `"rail": "lightrail"` means the value is stored in Lightrail and i
 **Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines it's rules. For example, a Gift Card Program might determine that the currency is USD and that all cards must be between $0-1000. The ValueStore would be a Gift Card with a unique code to access it. Programs also determine how ValueStores are accessed.  
 
 The way a ValueStore is referenced in `sources` depends its `access` property. This defines how it is accessed and is the second property in the `sources` object. There are four values:  
+ 
  1. **`customerId`:** Value is attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating Customers). This will cause the `orders` endpoint to consider all ValueStores associated with that customer and will resolve the complexity of applying them in the correct order.  
  
  2. **`secureCode`:** A unique-unguessable code and is most commonly used by gift cards and unique promotion codes.     
@@ -146,6 +147,14 @@ Usage:
 The `cardToken` is a tokenized credit card, created from Stripe Elements.
 
 ----
+
+### Authentication
+Authentication is done via an authorization header. You can retrieve your Lightrail API key [here](www.lightrail.com) (not yet live).
+
+All requests to Lightrail must be `https` and must include the following header:
+```
+Authorization: Bearer <API_KEY>
+```
 
 ### Getting Started
 See our examples below to get started with:

@@ -74,7 +74,7 @@ Example:
 }
 ```
 
-See [here](https://lightrailapi.docs.apiary.io/#reference/0/transactions/process-an-order) for full documentation of `/transactions/orders` endpoint.
+See [here](https://lightrailapi.docs.apiary.io/#reference) for full documentation of what else you can do with Promotions.
 
 ### Support
 Want more information on promotions? [Contact us](mailto:hello@lightrail.com) any time if you have any questions, we're here to help. 
