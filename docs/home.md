@@ -98,19 +98,17 @@ As you can see, Lightrail handles the complexity of applying the promotion, calc
 Lightrail returns a summary and detailed information of the transaction so that it's easy to display a breakdown to the customer. 
 
 ### Payment Sources
-The `sources` property in the `orders` endpoint contains a list of payment sources. 
-A source consists of an object with a `rail` identifier along with some additional data. There are currently two payment rails: `lightrail` and `stripe`. 
+The `sources` property in the `/transactions/orders` endpoint contains a list of payment sources. 
+A source has a `rail` property along with additional data. There are currently two payment rails: `lightrail` and `stripe`. 
 
 Support for more credit card processors such as BrainTree and Square is coming soon.
 
 ----
 
 #### Rail: Lightrail
-A source with `"rail": "lightrail"` means the value is stored in Lightrail. Value stored in Lightrail is represented by a ValueStore object.  
+A source with `"rail": "lightrail"` means the value is stored in Lightrail and is represented by a ValueStore object.  
 
-**ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as ValueStores. Different types of value are represented by modifying the properties of ValueStores.
-
-The way ValueStores are passed into the `sources` property of the order depends on the `access` property of the ValueStore. There are four different `access` types:  
+**ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as ValueStores. The way a ValueStore is referenced in `sources` depends its `access` property. This defines how it is accessed. There are four values:  
 
 **1. `customerId`:** Some value may be attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating `Customers`).
 For example account credits or promotions are commonly attached directly to a Customer. 
