@@ -4,7 +4,7 @@ Typically this is used for integrations where a customer can earn value, such as
 
 Your customer's account may represent value that can be used during checkout or it may represent points or credits that can be redeemed for in app rewards or promotions. 
 
-Like all other Lightrail value, accounts are backed by `ValueStores`. 
+Like all other Lightrail value, accounts are backed by ValueStores. 
 
 ### Getting Started with Accounts
 To get started with accounts, you first need to create a `Program` which defines the default parameters for you accounts.
@@ -105,7 +105,7 @@ Checkout is done using the `/transactions/orders` endpoint. To use an account di
 }
 ```
 
-Alternatively, since the account is associated with the customer, you can directly use the `customerId` as a payment source. This will consider all `ValueStores` associated with the customer.
+Alternatively, since the account is associated with the customer, you can directly use the `customerId` as a payment source. This will consider all ValueStores associated with the customer.
 ```json
 {
     "rail": "lightrail",
