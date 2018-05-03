@@ -5,8 +5,9 @@ Lightrail enables a wide variety of promotion use-cases. A few common examples a
  3. A site wide promotion code that can be entered during checkout (`access: publicCode`).
  
 These types of promotions are differentiated primarily based on the `access` property of ValueStores as you can see above. 
+
 In addition to how the promotion is accessed, they type of value they hold can also differ. 
-Promotions can be valid for a number of dollars or points off, but they can also represent a percent discount.
+Promotions can be valid for a number of dollars or points off, but they can also represent a percent discount (details to come).
 These variations are all determined by properties on the ValueStore which represents the promotion.
 
 See below for concrete examples for each type of promotion. 
