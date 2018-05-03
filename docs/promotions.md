@@ -45,19 +45,30 @@ Now that you have a `customerId` and a `programId` you can attach the promotion 
 ``` 
 
 #### 2. A Unique Code Promotion 
-Details coming soon.
+In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Unique Code Promotion". Once you've created the Promotion Program, all you need is the `programId`. 
+
+Below is the request to issue a unique code promotion.
+
+`POST https://api.lightrail.com/v2/valueStores`
+```json
+{
+    "valueStoreId": "unique-code-promo-xyz",
+    "programId": "spring-savings-promo",
+    "value": 500
+}
+```  
 
 #### 3. Public Promotion Code
-Details coming soon.
-
-#### 2. 
+In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Unique Code Promotion". 
+Typically for these types of Promotions you'll create an instance of the Promotion as part of the Promotion Program Flow. 
+This is where you'll specify the `publicCode` which can be used in your checkout. 
 
 ### Common Requests 
 
-#### Using the Promotion as a Payment Source in Checkout
-Checkout is done using the `/transactions/orders` endpoint. Since the account is associated with the customer, you can directly use the `customerId` as a payment source. 
-This will automatically use the promotion along with any other ValueStores associated with the customer.  
+#### Using a Promotion as a Payment Source in Checkout
+To use a Promotion in checkout you simply need to include it in the `sources` property. Again, this is based on `access` = `[customerId, secureCode, publicCode]`.   
 
+Example:
 ```json
 {
     "rail": "lightrail",
