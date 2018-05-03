@@ -116,7 +116,7 @@ The way a ValueStore is referenced in `sources` depends its `access` property. T
 3. **`publicCode`:** Usually a human-readable code like `EASYMONEY` which is displayed to many users. 
 4. **`valueStoreId`:** Directly refers to a ValueStore.
 
-Example:
+Usage:
 ```json
 {
     "rail": "lightrail",

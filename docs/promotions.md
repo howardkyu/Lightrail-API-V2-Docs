@@ -1,15 +1,10 @@
 # Promotions
 Lightrail enables a wide variety of promotion use-cases. A few common examples are:
- 1. Personalized promotion associated with a customer. 
- 2. Unique promotion code delivered to a potential customer.  
- 3. A site wide promotion code that can be entered during checkout.
+ 1. Personalized promotion associated with a customer (`access: customerId`).  
+ 2. Unique promotion code delivered to a potential customer (`access: secureCode`).  
+ 3. A site wide promotion code that can be entered during checkout (`access: publicCode`).
  
-These types of promotions are differentiated primarily based on the `access` property of ValueStores. 
-The `access` property for each of these above examples are:
-1. `customerId` - Attached to a customer.
-3. `secureCode` - A unique code distributed to an anonymous or known recipient.
-2. `publicCode` - A code shared with many anonymous or known recipients. 
-
+These types of promotions are differentiated primarily based on the `access` property of ValueStores as you can see above. 
 In addition to how the promotion is accessed, they type of value they hold can also differ. 
 Promotions can be valid for a number of dollars or points off, but they can also represent a percent discount.
 These variations are all determined by properties on the ValueStore which represents the promotion.
