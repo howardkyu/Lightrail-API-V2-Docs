@@ -106,11 +106,9 @@ Support for more credit card processors such as BrainTree and Square is coming s
 #### Rail: Lightrail
 A source with `"rail": "lightrail"` means the value is stored in Lightrail. Value stored in Lightrail is represented by a ValueStore object.  
 
-**ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as ValueStores.   
-Different types of value are represented by modifying the properties of ValueStores.
+**ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as ValueStores. Different types of value are represented by modifying the properties of ValueStores.
 
-The way ValueStores are passed into the `sources` property of the order depends on the `access` property of the ValueStore.  
-There are four different `access` types.  
+The way ValueStores are passed into the `sources` property of the order depends on the `access` property of the ValueStore. There are four different `access` types:  
 
 **`customerId`:** Some value may be attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating `Customers`).
 For example account credits or promotions are commonly attached directly to a Customer. 
@@ -135,9 +133,7 @@ Usage:
 }
 ``` 
 
-**`publicCode`**
-
-A `publicCode` is usually a human-readable code like `EASYMONEY` which would be displayed through various channels (ads, etc) to many users.
+**`publicCode`:** A `publicCode` is usually a human-readable code like `EASYMONEY` which would be displayed through various channels (ads, etc) to many users.
 
 Usage:
 ```json
@@ -145,7 +141,17 @@ Usage:
     "rail": "lightrail",
     "publicCode": "EASYMONEY"
 }
-```  
+```
+
+**`valueStoreId`:** Using `valueStoreId` directly refers to a single ValueStore.
+
+Usage:
+```json
+{
+    "rail": "lightrail",
+    "valueStoreId": "vs_123"
+}
+```
 
 #### Rail: Stripe
 The `"rail": "stripe"` is used when payment from a credit card is required for the `order`. 
