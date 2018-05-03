@@ -1,5 +1,6 @@
 # Promotions
 Lightrail enables a wide variety of promotion use-cases. A few common examples are:
+
  1. Personalized promotion associated with a customer (`access: customerId`).  
  2. Unique promotion code delivered to a potential customer (`access: secureCode`).  
  3. A site wide promotion code that can be entered during checkout (`access: publicCode`).
@@ -74,6 +75,7 @@ Example:
 }
 ```
 
+#### Other Use-cases
 See [here](https://lightrailapi.docs.apiary.io/#reference) for full documentation of what else you can do with Promotions.
 
 ### Support
