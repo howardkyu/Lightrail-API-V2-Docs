@@ -106,14 +106,12 @@ Support for more credit card processors such as BrainTree and Square is coming s
 #### Rail: Lightrail
 A source with `"rail": "lightrail"` means the value is stored in Lightrail. Value stored in Lightrail is represented by a `ValueStore` object.  
 
-**`ValueStores`**
-Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as `ValueStores`.   
+**`ValueStores`:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as `ValueStores`.   
 Different types of value are represented by modifying the properties of `ValueStores`.
 
 The way `ValueStores` are passed into the `sources` property of the `orders` resource depends on what type of value it is.
 
-**`customerId`**
-Some value may be attached directly to a `Customer` (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating `Customers`).
+**`customerId`:** Some value may be attached directly to a `Customer` (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating `Customers`).
 For example account credits or promotions are commonly attached directly to a `Customer`. 
 
 Usage:
@@ -126,8 +124,7 @@ Usage:
 
 This will cause the `orders` endpoint to consider all `ValueStores` associated with that customer and will resolve the complexity of applying them to the order in the correct order. 
 
-**`secureCode`**       
-A `secureCode` is a unique-unguessable code and is most commonly used by gift cards and unique promotion codes. 
+**`secureCode`:** A `secureCode` is a unique-unguessable code and is most commonly used by gift cards and unique promotion codes. 
 
 Usage:
 ```json
@@ -138,6 +135,7 @@ Usage:
 ``` 
 
 **`publicCode`**
+
 A `publicCode` is usually a human-readable code like `EASYMONEY` which would be displayed through various channels (ads, etc) to many users.
 
 Usage:

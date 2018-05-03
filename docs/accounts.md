@@ -10,15 +10,14 @@ Like all other Lightrail value, accounts are backed by `ValueStores`.
 To get started with accounts, you first need to create a `Program` which defines the default parameters for you accounts.
 
 #### Creating a Program for your Accounts
-The `Program` will define the basic properties like currency for the accounts (`ValueStores`) that will be created from it. 
+The Program will define the basic properties like currency for the accounts (ValueStores) that will be created from it. 
 
-Create your `Account Program` through the Lightrail web-app [here](https://www.lightrail.com) (web-app not yet complete).
-Once the `Program` has been created you'll supply the `programId` into requests to create `Accounts`.  
+Create your Account Program through the Lightrail web-app [here](https://www.lightrail.com) (web-app not yet complete).
+Once the Program has been created you'll supply the `programId` into requests to create the Account.  
 
-### Creating an Account
-If no `Customer` exists, you first need to create one to associate the `Account` with.
-
-Request to create `Customer`.
+#### Creating an Account
+If no Customer exists, you first need to create one to associate the `Account` with. Below is the request to create a Customer. 
+See [here](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for full details on the `/customers` endpoint. 
 
 `POST https://api.lightrail.com/v2/customers`
 ```json
@@ -28,11 +27,11 @@ Request to create `Customer`.
 }
 ```
 
-Next, you'll create a `ValueStore` which will represent the `Account` from your `Account Program`.
-Remember, `Accounts` are just a `ValueStore` with certain properties defined by the `Program`. 
-As such, you'll create `Accounts` through the `/valueStores` endpoint. 
+Next, you'll create a ValueStore which will represent the Account from your Account Program.
+Remember, Accounts are just a ValueStore with certain properties.
+As such, you'll create Accounts through the `/valueStores` endpoint. 
 
-Request to create `Account`.  
+Request to create an Account.  
 `POST https://api.lightrail.com/v2/valueStores`
 ```json
 {
