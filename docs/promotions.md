@@ -14,12 +14,12 @@ See below for concrete examples for each type of promotion.
 
 ### Getting Started with Promotions
 To get started with promotions, you first need to create a Program which defines the type of promotion you wish to create.
-The Program is created within your Lightrail Account. 
+A Promotion Program is created within your Lightrail Account. 
 
-While creating the Promotion Program, you'll specify parameters such as value, currency and additional properties regarding the Promotion.
+When creating the Promotion Program, you'll specify parameters such as value, currency and additional properties regarding the Promotion.
 
 #### 1. Personalized Promotion Attached to a Customer
-In the [Promotion Program](www.lightrail.com)(not yet live) you'll select the option "Personalized Customer Promotion". 
+In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Personalized Customer Promotion". 
 
 Also, if no Customer exists, you first need to create one to associate the `Account` with. Below is the request to create a Customer. 
 See [here](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for full details on the `/customers` endpoint. 
