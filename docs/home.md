@@ -171,6 +171,8 @@ Usage:
 
 The `cardToken` is a tokenized credit card, created from Stripe Elements.
 
+----
+
 ### Getting Started
 See our examples below to get started with:
 
