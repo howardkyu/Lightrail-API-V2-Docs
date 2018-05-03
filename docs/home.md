@@ -7,7 +7,7 @@ The checkout solution allows you to submit a customer's shopping cart along with
 Checkout is done by creating an order through the `/transactions/orders` endpoint. Let's look at an example. 
 
 Suppose you're running an ad campaign for 20% all orders that use the promotion code "EASYMONEY". 
-Perhaps a customer who has $20 account credits visits your store, enters the promotion code, and wants to purchase a $30 product. Using the `orders` endpoint it is easy to complete the payment for this entire transaction in a single request.
+Perhaps a customer who has $20 account credits visits your store, enters the promotion code, and wants to purchase a $30 product. Using the `/orders` endpoint it is easy to complete the payment for this entire transaction in a single request.
 
 **Request**: `POST /transactions/orders`
 ```json
