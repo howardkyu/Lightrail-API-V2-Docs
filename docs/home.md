@@ -99,18 +99,20 @@ Lightrail returns a summary and detailed information of the transaction so that 
 
 ### Orders Payment Sources
 The `sources` property in the `orders` endpoint contains a list of payment sources. 
-A source consists of an object with a `rail` identifier along with some additional data. There are currently two payment rails: `lightrail` and `stripe`. Support for more credit card processors such as BrainTree and Square is coming soon!
+A source consists of an object with a `rail` identifier along with some additional data. There are currently two payment rails: `lightrail` and `stripe`. 
+
+Support for more credit card processors such as BrainTree and Square is coming soon.
 
 #### Rail: Lightrail
-A source with `"rail": "lightrail"` means the value is stored in Lightrail. 
+A source with `"rail": "lightrail"` means the value is stored in Lightrail. Value stored in Lightrail is represented by a `ValueStore` object.  
 
-##### How Lightrail Stores Value: `ValueStores`
+**`ValueStores`**
 Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as `ValueStores`.   
 Different types of value are represented by modifying the properties of `ValueStores`.
 
 The way `ValueStores` are passed into the `sources` property of the `orders` resource depends on what type of value it is.
 
-##### `customerId`
+**`customerId`**
 Some value may be attached directly to a `Customer` (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating `Customers`).
 For example account credits or promotions are commonly attached directly to a `Customer`. 
 
@@ -124,7 +126,7 @@ Usage:
 
 This will cause the `orders` endpoint to consider all `ValueStores` associated with that customer and will resolve the complexity of applying them to the order in the correct order. 
 
-##### `secureCode`       
+**`secureCode`**       
 A `secureCode` is a unique-unguessable code and is most commonly used by gift cards and unique promotion codes. 
 
 Usage:
@@ -135,7 +137,7 @@ Usage:
 }
 ``` 
 
-##### `publicCode`
+**`publicCode`**
 A `publicCode` is usually a human-readable code like `EASYMONEY` which would be displayed through various channels (ads, etc) to many users.
 
 Usage:
