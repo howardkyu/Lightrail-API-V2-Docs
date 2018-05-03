@@ -13,10 +13,8 @@ These variations are all determined by properties on the ValueStore which repres
 See below for concrete examples for each type of promotion. 
 
 ### Getting Started with Promotions
-To get started with promotions, you first need to create a Program which defines the type of promotion you wish to create.
-A Promotion Program is created within your Lightrail Account. 
-
-When creating the Promotion Program, you'll specify parameters such as value, currency and additional properties regarding the Promotion.
+To get started with Promotions, you first need to create a Promotion Program which defines the type of promotion you wish to create.
+Promotion Programs are created within your Lightrail Account and specify details such as value and currency, along with some additonal properties.
 
 #### 1. Personalized Promotion Attached to a Customer
 In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Personalized Customer Promotion". 
