@@ -42,12 +42,7 @@ Request to create an Account.
 }
 ``` 
 
-#### Attributes
-Below is the list of attributes used when creating an account from a Program.
-- **valueStoreId** (_required_): Unique idempotent id for the ValueStore.
-- **programId** (_required_): The programId of the Program this ValueStore is in.
-- **customerId** (_required_): Unique ID for the Customer.
-- **value** (_optional_): An integer greater than or equal to 0 representing the initial value of the Account.
+Here `value` represents the initial value of the Account.
 
 ### Common Requests  
 Below are the most common requests made when interacting with accounts.

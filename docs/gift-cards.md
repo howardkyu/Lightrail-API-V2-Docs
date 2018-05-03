@@ -6,39 +6,13 @@ Like all other Lightrail value, gift cards are backed by `ValueStores`. You’ll
 ### Getting Started with Gift Cards
 To get started with gift cards, you first need to create a `Program` which defines the default parameters for your gift cards.
 
-#### Creating a Program
-The Program will define the basic properties like currency and allowed value ranges for your gift cards (`ValueStores`). 
-Below are the required and optional attributes needed for creating a Program for gift cards.   
+#### Creating a Program for your Gift Cards
+The Program will define the basic properties like currency and allowed value ranges for your gift cards (`ValueStores`).    
 
-How to create a Gift Card Program through the API. Note, typically Programs are created through the app (coming soon!). 
+Create your Account Program through the Lightrail web-app [here](https://www.lightrail.com) (web-app not yet complete).
+Once the Program has been created you'll supply the `programId` into requests to create a Gift Card.  
 
-`POST https://api.lightrail.com/v2/programs`
-```json
-{
-    "programId": "gift-cards-usd",
-    "name": "Gift Cards USD",
-    "currency": "USD",
-    "access": "secureCode",
-    "minInitialValue": 500,
-    "maxInitialValue": 100000,
-    "tags": ["giftcard"]
-}
-``` 
-
-#### Attributes
-Below is the list of attributes used when creating an Account Program.
- - **programId** (_required_): Unique idempotent ID for the Program.
- - **name** (_optional_): A human-readable name for the Program.
- - **currency** (_required_): Currency code. Can be a standard ISO form such as USD or CAD but can also be any branded currency, eg: `megabucks`.
- - **access** (_required_): Always use value `secureCode` for creating account programs. This means the gift card will be created using a unique unguessable code.
- - **active** (_optional_): Whether the ValueStore is active and can be used upon creation.
- - **minInitialValue** (_optional_): The minimum value the Value Store can be created with.
- - **maxInitialValue** (_optional_): The maximum value the Value Store can be created with.  
- - **fixedInitialValues** (_optional_): A list of values the Value Store can be created with.  
- - **tags** (_optional_): Segmentation tags.
- - **metadata** (_optional_): Arbitrary data associated with the Program.
-
-### Issuing a Gift Card
+#### Issuing a Gift Card
 Creating Gift Cards is easy. Below is the call to do this. 
 
 `POST https://api.lightrail.com/v2/valueStores`
@@ -49,12 +23,6 @@ Creating Gift Cards is easy. Below is the call to do this.
     "value": 2500
 }
 ``` 
-
-#### Attributes
-Below is the list of attributes used when creating an Account from a Program.
-- **valueStoreId** (_required_): Unique idempotent id for the ValueStore.
-- **programId** (_required_): The programId of the Program this ValueStore is in.
-- **value** (_optional_): An integer greater than or equal to 0 representing the initial value of the Account.
 
 ### Common Requests  
 Below are the most common requests made when interacting with Gift Cards.

@@ -1,56 +1,42 @@
 # Promotions
 Lightrail enables a wide variety of promotion use-cases. A few common examples are:
- 1. Personalized promotion associated with a customer.
- 2. A site wide promotion code that can be entered during checkout.
- 3. Unique promotion code delivered to a potential customer.  
+ 1. Personalized promotion associated with a customer. 
+ 2. Unique promotion code delivered to a potential customer.  
+ 3. A site wide promotion code that can be entered during checkout.
  
-These types of promotions are differentiated primarily based on the `accessType` property.
+These types of promotions are differentiated primarily based on the `access` property of ValueStores. 
+The `access` property for each of these above examples are:
+1. `customerId` - Attached to a customer.
+3. `secureCode` - A unique code distributed to an anonymous or known recipient.
+2. `publicCode` - A code shared with many anonymous or known recipients. 
+
 In addition to how the promotion is accessed, they type of value they hold can also differ. 
 Promotions can be valid for a number of dollars or points off, but they can also represent a percent discount.
-These variations are all determined by properties on the `ValueStore` which represents the promotion.
+These variations are all determined by properties on the ValueStore which represents the promotion.
+
+See below for concrete examples for each type of promotion. 
 
 ### Getting Started with Promotions
-To get started with promotions, you first need to create a `Program` which defines the default parameters for the promotion you want to create.
+To get started with promotions, you first need to create a Program which defines the type of promotion you wish to create.
+The Program is created within your Lightrail Account. 
 
-Let's look at an example of creating a sign-up promotion which will be attached to new sign-ups.  
+While creating the Promotion Program, you'll specify parameters such as value, currency and additional properties regarding the Promotion.
 
-#### Creating a Program for a Customer Promotion
-The `Program` will define the basic properties like `currency`, `accessType` and `value` for the (`ValueStores`) that will be created from it. 
-Below are the required and optional attributes needed for creating a `Program` for a promotion.
+#### 1. Personalized Promotion Attached to a Customer
+In the [Promotion Program](www.lightrail.com)(not yet live) you'll select the option "Personalized Customer Promotion". 
 
-Example of creating a `Program` for a promotion that will be directly attached to a customer. 
+Also, if no Customer exists, you first need to create one to associate the `Account` with. Below is the request to create a Customer. 
+See [here](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for full details on the `/customers` endpoint. 
 
-`POST https://api.lightrail.com/v2/programs`
+`POST https://api.lightrail.com/v2/customers`
 ```json
 {
-    "programId": "sign-up-promotion",
-    "name": "Spring Promotion USD",
-    "currency": "USD",
-    "access": "customerId",
-    "preTax": false,
-    "discount": true,
-    "fixedInitialValues": [
-        500
-    ],
-    "tags": ["promotion", "new-sign-up"]
+   "customerId": "cus_123",
+   "email": "alice@examle.com"
 }
-``` 
+```
 
-#### Attributes
-Below is the list of attributes used when creating a Promotion Program.
- - **programId** (_required_): Unique idempotent ID for the Program.
- - **currency** (_required_): Currency code. Can be a standard ISO form such as USD or CAD but can also be any branded currency, eg: `megabucks`.
- - **access** (_required_): In this case use `customerId` for attaching to a customer.
- - **discount** (_required_): Set to `true`. 
- - **minInitialValue** (_optional_): The minimum value the Value Store can be created with.
- - **maxInitialValue** (_optional_): The maximum value the Value Store can be created with.  
- - **fixedInitialValues** (_optional_): A list of values the Value Store can be created with.    
- - **name** (_optional_): A human-readable name for the Program.
- - **tags** (_optional_): Segmentation tags.
- - **metadata** (_optional_): Arbitrary data associated with the Program.
-
-### Request to add the Promotion to a Customer 
-Request to add a promotion to a customer.  
+Now that you have a `customerId` and a `programId` you can attach the promotion to a customer. Below is the request to do this.
 
 `POST https://api.lightrail.com/v2/valueStores`
 ```json
@@ -62,12 +48,15 @@ Request to add a promotion to a customer.
 }
 ``` 
 
-#### Attributes
-Below is the list of attributes used when creating an account from a Program.
-- **valueStoreId** (_required_): Unique idempotent id for the ValueStore.
-- **programId** (_required_): The programId of the Program this ValueStore is in.
-- **customerId** (_required_): Unique ID for the Customer.
-- **value** (_required_): In this case, must match the value defined in `fixedInitialValues`. 
+#### 2. A Unique Code Promotion 
+Details coming soon.
+
+#### 3. Public Promotion Code
+Details coming soon.
+
+#### 2. 
+
+### Common Requests 
 
 #### Using the Promotion as a Payment Source in Checkout
 Checkout is done using the `/transactions/orders` endpoint. Since the account is associated with the customer, you can directly use the `customerId` as a payment source. 
