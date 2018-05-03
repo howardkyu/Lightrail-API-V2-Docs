@@ -45,7 +45,7 @@ Now that you have a `customerId` and a `programId` you can attach the promotion 
 ``` 
 
 #### 2. A Unique Code Promotion 
-In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Unique Code Promotion". Once you've created the Promotion Program, all you need is the `programId`. 
+In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Unique Promotion Code". Once you've created the Promotion Program, all you need is the `programId`. 
 
 Below is the request to issue a unique code promotion.
 
@@ -59,7 +59,7 @@ Below is the request to issue a unique code promotion.
 ```  
 
 #### 3. Public Promotion Code
-In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Unique Code Promotion". 
+In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Public Promotion Code". 
 Typically for these types of Promotions you'll create an instance of the Promotion as part of the Promotion Program Flow. 
 This is where you'll specify the `publicCode` which can be used in your checkout. 
 
