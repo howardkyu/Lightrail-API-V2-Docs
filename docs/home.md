@@ -3,7 +3,7 @@ Welcome to Lightrail V2.
 
 Lightrail makes it easy to create gift cards, manage customer account credit, run promotional discount programs, and collect payment all in one unified checkout solution.
 
-The checkout solution allows you to submit a customer's shopping cart along with a list of sources to pay for the order. The payment sources can be value held by that customer in Lightrail along with external value, such as a credit card, to pay for any remainder of the order. Lightrail takes care of the complexity of regarding the split-tender transaction, ensuring value in Lightrail and external credit cards are charged the correct amount.
+The checkout solution allows you to submit a customer's shopping cart along with a list of sources to pay for the order. The payment sources can be value held by that customer in Lightrail along with external value, such as a credit card, to pay for any remainder of the order. Lightrail takes care of the complexity of regarding the split-tender transaction, ensuring value in Lightrail and external credit cards are charged the correct amount. 
 
 ### Checkout with Lightrail
 Checkout is done by creating an order through the `/transactions/orders` endpoint. Let's look at an example. 
