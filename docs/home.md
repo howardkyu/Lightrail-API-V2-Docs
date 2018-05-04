@@ -1,7 +1,7 @@
 # Welcome to Lightrail V2
 Lightrail makes it easy to create gift cards, manage customer account credit, run promotional discount programs, and collect payment all in one unified checkout solution.
 
-The checkout solution allows you to submit a customer's shopping cart along with a list of sources to pay for the order. The payment sources can be value held by that customer in Lightrail along with external value, such as a credit card, to pay for any remainder of the order. Lightrail takes care of the complexity of this split-tender transaction, ensuring value in Lightrail and external credit cards are charged the correct amount.
+The checkout solution allows you to submit a customer's shopping cart along with a list of sources to pay for the order. The payment sources can be value held by that customer in Lightrail along with external value, such as a credit card, to pay for any remainder of the order. Lightrail takes care of the complexity of regarding the split-tender transaction, ensuring value in Lightrail and external credit cards are charged the correct amount.
 
 ### Checkout with Lightrail
 Checkout is done by creating an order through the `/transactions/orders` endpoint. Let's look at an example. 
@@ -108,7 +108,7 @@ Support for more credit card processors such as BrainTree and Square is coming s
 #### Rail: Lightrail
 A source with `"rail": "lightrail"` means the value is stored in Lightrail and is represented by a ValueStore object.  
 
-**ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as ValueStores. ValueStores are created from a template called Programs.
+**ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits / loyalty points, or a promotional offer, are stored as ValueStores. ValueStores are created from a template called Programs.
 
 **Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines its rules. For example, a Gift Card Program might determine that the currency is USD and that all cards must be between $0-1000. The ValueStore would be a Gift Card with a unique code to access it. Programs also determine how ValueStores are accessed.  
 
