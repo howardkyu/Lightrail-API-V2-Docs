@@ -2,10 +2,12 @@
 Lightrail enables a wide variety of promotion use-cases. A few common examples are:
 
  1. Personalized promotion associated with a customer (`access: customerId`).  
+ 
  2. Unique promotion code delivered to a potential customer (`access: secureCode`).  
+ 
  3. A site wide promotion code that can be entered during checkout (`access: publicCode`).
  
-These types of promotions are differentiated primarily based on the `access` property of ValueStores as you can see above. 
+These types of promotions are differentiated primarily based on the `access` property of ValueStores. 
 
 In addition to how the promotion is accessed, they type of value they hold can also differ. 
 Promotions can be valid for a number of dollars or points off, but they can also represent a percent discount (details to come).
@@ -20,7 +22,7 @@ Promotion Programs are created within your Lightrail Account and specify details
 #### 1. Personalized Promotion Attached to a Customer
 In the [Promotion Program Creation Flow](www.lightrail.com) (not yet live) you'll select the option "Personalized Customer Promotion". 
 
-Also, if no Customer exists, you first need to create one to associate the `Account` with. Below is the request to create a Customer. 
+Also, if no Customer exists, you first need to create one to associate with the `Account`. Below is the request to create a Customer. 
 See [here](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for full details on the `/customers` endpoint. 
 
 `POST https://api.lightrail.com/v2/customers`
@@ -65,7 +67,7 @@ This is where you'll specify the `publicCode` which can be used in your checkout
 ### Common Requests 
 
 #### Using a Promotion as a Payment Source in Checkout
-To use a Promotion in checkout you simply need to include it in the `sources` property. Again, this is based on `access` = `[customerId, secureCode, publicCode]`.   
+To use a Promotion in checkout you simply need to include it in the `sources` property. Again, this is based on `access` and possible values are `[customerId, secureCode, publicCode]`.   
 
 Example:
 ```json

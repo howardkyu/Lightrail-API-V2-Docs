@@ -3,13 +3,15 @@ Welcome to Lightrail V2.
 
 Lightrail makes it easy to create gift cards, manage customer account credit, run promotional discount programs, and collect payment all in one unified checkout solution.
 
-The checkout solution allows you to submit a customer's shopping cart along with a list of sources to pay for the order. The payment sources can be value held by that customer in Lightrail along with external value, such as a credit card, to pay for any remainder of the order. Lightrail takes care of the complexity of regarding the split-tender transaction, ensuring value in Lightrail and external credit cards are charged the correct amount. 
+The checkout solution allows you to submit a customer's shopping cart along with a list of sources to pay for the order. The payment sources can be value held by that customer in Lightrail along with external value, such as a credit card. Lightrail takes care of the complexity regarding the split-tender transaction, ensuring value in Lightrail and external credit cards are charged the correct amount.
+
+Lightrail enables you to offer gift cards, account credits, and sophisticated promotions, all of which can be used seamlessly during checkout.  
 
 ### Checkout with Lightrail
 Checkout is done by creating an order through the `/transactions/orders` endpoint. Let's look at an example. 
 
-Suppose you're running an ad campaign for 20% all orders that use the promotion code "EASYMONEY". 
-Perhaps a customer who has $20 account credits visits your store, enters the promotion code, and wants to purchase a $30 product. Using the `/orders` endpoint it is easy to complete the payment for this entire transaction in a single request.
+Suppose you're running an ad campaign for 20% off all orders that use the promotion code "EASYMONEY". 
+Perhaps a customer who has $20 account credits visits your store, enters the promotion code, and wants to purchase a $30 product. Using the `/transactions/orders` endpoint it is easy to complete the payment for this entire transaction in a single request.
 
 **Request**: `POST /transactions/orders`
 ```json
@@ -42,13 +44,13 @@ Perhaps a customer who has $20 account credits visits your store, enters the pro
 
 You can see `lineItems` contains the basic shopping cart information. 
 
-Also, note the `sources` property in the request. It includes three sources, two of which are value stored in Lightrail, the other is a tokenized card from Stripe.
+Also, note the `sources` property in the example request. It includes three sources, two of which are value stored in Lightrail, the other is a tokenized card from Stripe.
 
- - `"customerId": "cus_123"`: uses any value associated with that customer in Lightrail. 
+ - `"customerId": "cus_123"` - uses any value associated with that customer in Lightrail. 
  
- - `"publicCode: "EASYMONEY"`: represents the promotion code entered during checkout.
+ - `"publicCode: "EASYMONEY"` - represents the promotion code entered during checkout.
  
- - `"cardToken": "tok_12345"`: tokenized card using Stripe elements.  
+ - `"cardToken": "tok_12345"` - tokenized card using Stripe elements.  
  
 **Response**: `200 OK`
 ```json
@@ -99,13 +101,13 @@ Also, note the `sources` property in the request. It includes three sources, two
 
 As a result of this transaction, the promotion was applied, the customer's account has been charged $20, and finally, their credit card was charged the remaining $5.20.
 As you can see, Lightrail handles the complexity of applying the promotion, calculating tax and charging the various payment sources, all within a single transaction. 
-Lightrail returns a summary and detailed information of the transaction so that it's easy to display a breakdown to the customer. 
+Lightrail returns a summary and detailed information of the transaction, so that it's easy to display a breakdown to the customer. 
 
 ### Payment Sources
 The `sources` property in the `/transactions/orders` endpoint contains a list of payment sources. 
 A source has a `rail` property along with additional data. There are currently two payment rails: `lightrail` and `stripe`. 
 
-Support for more credit card processors such as BrainTree and Square is coming soon.
+Support for more credit card processors, such as BrainTree and Square, is coming soon.
 
 ----
 
@@ -114,18 +116,18 @@ A source with `"rail": "lightrail"` means the value is stored in Lightrail and i
 
 **ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits / loyalty points, or a promotional offer, are stored as ValueStores. ValueStores are created from a template called Programs.
 
-**Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines its properties and format.   
+**Programs:** Defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines its properties and format.   
 
 ![ValueStore and Program Diagram](https://raw.githubusercontent.com/Giftbit/Lightrail-API-V2-Docs/examples_to_docs20/docs/assets/ValueStores%20Programs%20Diagram.png)
 
 ##### Sources
-The way a ValueStore is referenced in `sources` depends its `access` property. This defines how it is accessed and is the second property in the `sources` object. The values are:  
+The way a ValueStore is referenced in `sources` depends on its `access` property. This defines how it is accessed and is the second property in the `sources` object. The values are:  
  
  - **`customerId`:** Value is attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating Customers). This will cause the `orders` endpoint to consider all ValueStores associated with that customer and will resolve the complexity of applying them in the correct order.  
  
- - **`secureCode`:** A unique-unguessable code and is most commonly used by gift cards and unique promotion codes.     
+ - **`secureCode`:** A unique and unguessable code, most commonly used by gift cards and single-use promotion codes.     
  
- - **`publicCode`:** Usually a human-readable code like `EASYMONEY` which is displayed to many users.  
+ - **`publicCode`:** Usually a human-readable code, like `EASYMONEY`, which is displayed to many users.  
  
  - **`valueStoreId`:** Directly refers to a ValueStore.    
 
@@ -141,7 +143,7 @@ Example usage with `customerId`:
 
 #### Rail: Stripe
 The `"rail": "stripe"` is used when payment from a credit card is required for the `order`. 
-You must OAuth your Stripe account with Lightrail so that Lightrail can charge the credit card on your behalf using [Stripe Connect](https://stripe.com/connect).
+You must connect your Stripe account with Lightrail, using OAuth, so that Lightrail can charge the credit card on your behalf. This is done via [Stripe Connect](https://stripe.com/connect).
 
 Usage:
 ```json
@@ -164,7 +166,7 @@ Authorization: Bearer <API_KEY>
 ```
 
 ### Getting Started
-See our examples below to get started with:
+See the following sections to get started with:
 
  - [Gift cards](https://localhost:8181/docs/#gift-cards/gift-cards)
  
