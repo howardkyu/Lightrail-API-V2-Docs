@@ -110,7 +110,9 @@ A source with `"rail": "lightrail"` means the value is stored in Lightrail and i
 
 **ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits or points, or a promotional offer for a discount, are stored as ValueStores. ValueStores are created from a template called Programs.
 
-**Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines its rules. For example, a Gift Card Program might determine that the currency is USD and that all cards must be between $0-1000. The ValueStore would be a Gift Card with a unique code to access it. Programs also determine how ValueStores are accessed.  
+**Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines its rules. For example, a Gift Card Program might determine that the currency is USD and that all cards must be between $0-1000. The ValueStore would be a Gift Card with a unique code to access it. Programs also determine how ValueStores are accessed. 
+
+![Gift Card Purchase Component](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/docs/assets/purchase-widget.png)
 
 The way a ValueStore is referenced in `sources` depends its `access` property. This defines how it is accessed and is the second property in the `sources` object. The values are:  
  
