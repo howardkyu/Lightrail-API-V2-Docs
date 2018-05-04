@@ -1,5 +1,5 @@
 # Overview and Checkout
-Welcome to Lightrail V2.
+Welcome to Lightrail V2. This documentation serves as a guide to get you started as quickly as possible. The full endpoint documentation can be found [here](https://lightrailapi.docs.apiary.io/#).  
 
 Lightrail makes it easy to create gift cards, manage customer account credit, run promotional discount programs, and collect payment all in one unified checkout solution.
 
