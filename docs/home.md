@@ -12,11 +12,11 @@ Perhaps a customer who has $20 account credits visits your store, enters the pro
 **Request**: `POST /transactions/orders`
 ```json
 {
-    "transactionId": "unique-id-123",
+    "transactionId": "pi4tsxlgudsu",
     "currency": "USD",
     "lineItems": [
         {
-            "productId": "pid_1",
+            "productId": "pid_h6d3adfad",
             "unitPrice": 3000,
             "taxRate": 0.05,
         }
@@ -24,7 +24,7 @@ Perhaps a customer who has $20 account credits visits your store, enters the pro
     "sources": [
         {
             "rail": "lightrail",
-            "customerId": "cus_123"
+            "customerId": "cus_hfr66ufth"
         },
         {
             "rail": "lightrail",
@@ -32,7 +32,7 @@ Perhaps a customer who has $20 account credits visits your store, enters the pro
         },
         {
             "rail": "stripe",
-            "cardToken": "tok_12345"
+            "cardToken": "tok_sdf3wj7fsf"
         }
     ]
 }
@@ -49,7 +49,7 @@ Also, note the `sources` property in the request. It includes three sources, two
 **Response**: `200 OK`
 ```json
 {
-    "transactionId": "unique-id-123",
+    "transactionId": "pi4tsxlgudsu",
     "currency": "USD",
     "totals": {
         "subtotal": 3000,
@@ -59,7 +59,7 @@ Also, note the `sources` property in the request. It includes three sources, two
     },
     "lineItems": [
         {
-            "productId": "pid_1",
+            "productId": "pid_h6d3adfad",
             "unitPrice": 3000,
             "taxRate": 0.05,
             "lineTotal": {
@@ -74,19 +74,19 @@ Also, note the `sources` property in the request. It includes three sources, two
     "steps": [
         {
             "rail": "lightrail",
-            "valueStoreId": "easymoney-promo",
+            "valueStoreId": "easymoney-promo-g5sdg4asf",
             "amount": -600, 
             "discount": true
         },
         {
             "rail": "lightrail",
-            "valueStoreId": "cus_123-account",
+            "valueStoreId": "cus_hfr66ufth-account-jtf65sea3",
             "amount": -2000, 
             "discount": false
         },
         {
             "rail": "stripe",
-            "chargeId": "ch_abcde",
+            "chargeId": "ch_t4westg4dghf",
             "amount": -520
         }
     ]
@@ -110,10 +110,11 @@ A source with `"rail": "lightrail"` means the value is stored in Lightrail and i
 
 **ValueStores:** Value stored in Lightrail, whether it represents a gift card, account credits / loyalty points, or a promotional offer, are stored as ValueStores. ValueStores are created from a template called Programs.
 
-**Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines its rules. For example, a Gift Card Program might determine that the currency is USD and that all cards must be between $0-1000. The ValueStore would be a Gift Card with a unique code to access it. Programs also determine how ValueStores are accessed.  
+**Programs:** A Program defines default properties for the ValueStores created from them. A ValueStore can be thought of as an instance of the value, and the Program defines its properties and format.   
 
 ![ValueStore and Program Diagram](https://raw.githubusercontent.com/Giftbit/Lightrail-API-V2-Docs/examples_to_docs20/docs/assets/ValueStores%20Programs%20Diagram.png)
 
+##### Sources
 The way a ValueStore is referenced in `sources` depends its `access` property. This defines how it is accessed and is the second property in the `sources` object. The values are:  
  
  - **`customerId`:** Value is attached directly to a Customer (see the [create customer documentation](https://lightrailapi.docs.apiary.io/#reference/0/customers/create-customer) for details on creating Customers). This will cause the `orders` endpoint to consider all ValueStores associated with that customer and will resolve the complexity of applying them in the correct order.  
@@ -128,7 +129,7 @@ Example usage with `customerId`:
 ```json
 {
     "rail": "lightrail",
-    "customerId": "cus_123"
+    "customerId": "cus_hfr66ufth"
 }
 ```
 
@@ -142,11 +143,11 @@ Usage:
 ```json
 {
     "rail": "stripe",
-    "cardToken": "tok_12345"
+    "cardToken": "tok_sdf3wj7fsf"
 }
 ```  
 
-The `cardToken` is a tokenized credit card, created from Stripe Elements.
+The `cardToken` is a tokenized credit card, created from [Stripe Elements](https://stripe.com/docs/stripe-js/elements/quickstart).
 
 ----
 
