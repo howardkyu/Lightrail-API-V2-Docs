@@ -25,7 +25,7 @@
             }
             
 + Parameter
-    + id (string) - the ID of the Contact to update.
+    + id (string) - The ID of the Contact to update.
     
 + Response 200 (application/json)
     + Attributes (Contact)

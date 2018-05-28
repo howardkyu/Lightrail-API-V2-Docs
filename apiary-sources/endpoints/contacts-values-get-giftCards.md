@@ -6,7 +6,7 @@
             {{header.authorization}}
 
 + Parameter
-  + id (string) - the ID of the Contact whose gift cards should be retrieved.
+  + id (string) - The ID of the Contact whose Gift Cards should be retrieved.
 
 + Response 200 (application/json)
   + Attributes (array[Value])

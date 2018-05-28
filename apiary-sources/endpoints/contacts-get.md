@@ -6,7 +6,7 @@
             {{header.authorization}}
 
 + Parameter
-    + id (string) - the ID of the Contact to get.
+    + id (string) - The ID of the Contact to get.
 
 + Response 200 (application/json)
     + Attributes (Contact)

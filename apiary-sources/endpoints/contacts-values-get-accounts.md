@@ -6,7 +6,7 @@
             {{header.authorization}}
 
 + Parameter
-    + id (string) - the ID of the Contact whose accounts should be retrieved.
+    + id (string) - The ID of the Contact whose Accounts should be retrieved.
 
 + Response 200 (application/json)
     + Attributes (array[Value])

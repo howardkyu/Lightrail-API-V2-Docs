@@ -69,7 +69,7 @@ Contacts are the people or businesses who buy products or services from you.  Th
             Authorization: Bearer <API_KEY>
         
     + Attributes
-        + id (string, required) - Unique idempotent ID for the Contact.
+        + id (string, required) - Unique idempotent ID for the Contact. Usually an existing identifier from your system.
         + firstName (string, optional) - The Contact's first name.
         + lastName (string, optional) - The Contact's last name.
         + email (string, optional) - The Contact's email.
@@ -113,7 +113,7 @@ Contacts are the people or businesses who buy products or services from you.  Th
             Authorization: Bearer <API_KEY>
 
 + Parameter
-    + id (string) - the ID of the Contact to get.
+    + id (string) - The ID of the Contact to get.
 
 + Response 200 (application/json)
     + Attributes (Contact)
@@ -143,10 +143,10 @@ Contacts are the people or businesses who buy products or services from you.  Th
 + Parameter
     + limit (number, optional) - The max number of items to get.
     + offset (number, optional) - The number of items to skip.
-    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (number, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match.
-    + firstName (string, optional) - Filter by the firstName.
-    + lastName (string, optional) - Filter by the lastName.
+    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (number, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + firstName (string, optional) - Filter by firstName.
+    + lastName (string, optional) - Filter by lastName.
     + email (string, optional) - Filter by email.
     
 + Response 200 (application/json)
@@ -186,7 +186,7 @@ Contacts are the people or businesses who buy products or services from you.  Th
             Authorization: Bearer <API_KEY>
         
     + Attributes
-        + id (string, optional) - Unique idempotent ID for the Contact.  If present must match the ID in the path.
+        + id (string, optional) - Unique idempotent ID for the Contact. Usually an existing identifier from your system.  If present must match the ID in the path.
         + firstName (string, optional) - The Contact's first name.
         + lastName (string, optional) - The Contact's last name.
         + email (string, optional) - The Contact's email.
@@ -202,7 +202,7 @@ Contacts are the people or businesses who buy products or services from you.  Th
             }
             
 + Parameter
-    + id (string) - the ID of the Contact to update.
+    + id (string) - The ID of the Contact to update.
     
 + Response 200 (application/json)
     + Attributes (Contact)
@@ -229,7 +229,7 @@ Contacts are the people or businesses who buy products or services from you.  Th
             Authorization: Bearer <API_KEY>
 
 + Parameter
-    + id (string) - the ID of the Contact to delete.
+    + id (string) - The ID of the Contact to delete.
 
 + Response 200 (application/json)
 
@@ -259,7 +259,7 @@ Contacts are the people or businesses who buy products or services from you.  Th
             Authorization: Bearer <API_KEY>
 
 + Parameter
-    + id (string) - the ID of the Contact whose accounts should be retrieved.
+    + id (string) - The ID of the Contact whose Accounts should be retrieved.
 
 + Response 200 (application/json)
     + Attributes (array[Value])
@@ -294,7 +294,7 @@ Contacts are the people or businesses who buy products or services from you.  Th
             Authorization: Bearer <API_KEY>
 
 + Parameter
-  + id (string) - the ID of the Contact whose gift cards should be retrieved.
+  + id (string) - The ID of the Contact whose Gift Cards should be retrieved.
 
 + Response 200 (application/json)
   + Attributes (array[Value])
@@ -329,7 +329,7 @@ Contacts are the people or businesses who buy products or services from you.  Th
             Authorization: Bearer <API_KEY>
 
 + Parameter
-    + id (string) - the ID of the Contact whose promotions should be retrieved.
+    + id (string) - The ID of the Contact whose Promotions should be retrieved.
 
 + Response 200 (application/json)
     + Attributes (array[Value])
@@ -513,8 +513,8 @@ An Account is Value specifically tied to a Contact.
 + Parameter
     + limit (number, optional) - The max number of items to get.
     + offset (number, optional) - The number of items to skip.
-    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (string, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match.
+    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (string, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
     + program (string, optional) - Filter by Program ID.
     
 + Response 200 (application/json)
@@ -742,8 +742,8 @@ A Gift Card is Value that starts as identified by a code.  The code is kept secr
 + Parameter
     + limit (number, optional) - The max number of items to get.
     + offset (number, optional) - The number of items to skip.
-    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (string, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match.
+    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (string, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
     + contact (string, optional) - Filter by Values attached to the given Contact ID.
     + program (string, optional) - Filter by Program ID.
     
@@ -1048,9 +1048,9 @@ Programs define the behaviour of Value that you wish to issue: in this case, gif
 + Parameter
     + limit (number, optional) - The max number of items to get.
     + offset (number, optional) - The number of items to skip.
-    + id (string, optional) - Filter by ID. Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (number, optional) - Filter by tag. Multiple values can be sent as a comma separated list in which case only one value must match.
-    + currency (string, optional) - Filter by currency. Multiple values can be sent as a comma separated list in which case only one value must match.
+    + id (string, optional) - Filter by ID. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (number, optional) - Filter by tag. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + currency (string, optional) - Filter by currency. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
     
 + Response 200 (application/json)
     + Headers
@@ -1355,8 +1355,8 @@ A Promotion is [Value](#reference/advanced/values) that is given away to incenti
 + Parameter
     + limit (number, optional) - The max number of items to get.
     + offset (number, optional) - The number of items to skip.
-    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (string, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match.
+    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (string, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
     + contact (string, optional) - Filter by Values attached to the given Contact ID.
     + program (string, optional) - Filter by Program ID.
     
@@ -1727,9 +1727,9 @@ Programs define the behaviour of promotional value that you issue. Programs are 
 + Parameter
     + limit (number, optional) - The max number of items to get.
     + offset (number, optional) - The number of items to skip.
-    + id (string, optional) - Filter by ID. Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (number, optional) - Filter by tag. Multiple values can be sent as a comma separated list in which case only one value must match.
-    + currency (string, optional) - Filter by currency. Multiple values can be sent as a comma separated list in which case only one value must match.
+    + id (string, optional) - Filter by ID. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (number, optional) - Filter by tag. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + currency (string, optional) - Filter by currency. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
     
 + Response 200 (application/json)
     + Headers
@@ -2816,8 +2816,8 @@ A Value (naturally) represents value in the Lightrail system.  It can be a Gift 
 + Parameter
     + limit (number, optional) - The max number of items to get.
     + offset (number, optional) - The number of items to skip.
-    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (number, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match.
+    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (number, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
     + type (string, optional) - Filter by Value type.
     + contact (string, optional) - Filter by Values attached to the given Contact ID.
     + program (string, optional) - Filter by Program ID.
@@ -2863,8 +2863,8 @@ Update all Values that match the given query parameters.
         
 + Parameter
     + limit (number, optional) - The max number of items to get.  This limits the number of items returned but not the number of items modified.
-    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (number, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match.
+    + id (number, optional) - Filter by ID.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (number, optional) - Filter by tag.  Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
     + type (string, optional) - Filter by Value type.
     + contact (string, optional) - Filter by Values attached to the given Contact ID.
     + program (string, optional) - Filter by Program ID.
@@ -2967,9 +2967,9 @@ Programs can also be used to control and organize gift card campaigns. Lightrail
 + Parameter
     + limit (number, optional) - The max number of items to get.
     + offset (number, optional) - The number of items to skip.
-    + id (string, optional) - Filter by ID. Multiple values can be sent as a comma separated list in which case only one value must match.
-    + tags (number, optional) - Filter by tag. Multiple values can be sent as a comma separated list in which case only one value must match.
-    + currency (string, optional) - Filter by currency. Multiple values can be sent as a comma separated list in which case only one value must match.
+    + id (string, optional) - Filter by ID. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + tags (number, optional) - Filter by tag. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
+    + currency (string, optional) - Filter by currency. Multiple values can be sent as a comma separated list in which case only one value must match ('OR' search).
     
 + Response 200 (application/json)
     + Headers
@@ -3172,7 +3172,7 @@ A Currency is a unit of money in Lightrail.  It can be a standard currency such 
 + decimalPlaces (number, required) - The number of decimal places used in formatting, eg: US Dollars are stored in cents so `decimalPlaces` is `2`.
 
 ## Contact (object)
-+ id (string, required) - Unique idempotent ID for the Contact.
++ id (string, required) - Unique idempotent ID for the Contact. Usually an existing identifier from your system.
 + firstName (string, optional) - The Contact's first name.
 + lastName (string, optional) - The Contact's last name.
 + email (string, optional) - The Contact's email.

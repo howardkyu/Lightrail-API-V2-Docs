@@ -6,7 +6,7 @@
             {{header.authorization}}
 
 + Parameter
-    + id (string) - the ID of the Contact to delete.
+    + id (string) - The ID of the Contact to delete.
 
 + Response 200 (application/json)
 

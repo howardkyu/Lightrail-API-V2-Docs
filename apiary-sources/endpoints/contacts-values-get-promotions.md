@@ -6,7 +6,7 @@
             {{header.authorization}}
 
 + Parameter
-    + id (string) - the ID of the Contact whose promotions should be retrieved.
+    + id (string) - The ID of the Contact whose Promotions should be retrieved.
 
 + Response 200 (application/json)
     + Attributes (array[Value])
