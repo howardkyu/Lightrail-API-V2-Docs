@@ -11,6 +11,10 @@ valueRule = currentLineItem.lineTotal.subtotal * 0.20
 ```
 
 ### 10% Off a particular product
+```
+valueRule = currentLineItem.lineTotal.subtotal * 0.20
+redemptionRule = currentLineItem.productId == 'p1'
+```
 
 ## Advanced
 If you want to get creative this is what you should know.
