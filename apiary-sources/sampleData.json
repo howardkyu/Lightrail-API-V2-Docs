@@ -1,6 +1,36 @@
 {
   "calls": [
     {
+      "callId": "callId-LR_demo_currency",
+      "method": "POST",
+      "endpoint": "/currencies",
+      "body": {
+        "code": "USD",
+        "name": "US Dollars",
+        "symbol": "$",
+        "decimalPlaces": 2
+      }
+    },
+    {
+      "callId": "callId-LR_demo_digc_program",
+      "method": "POST",
+      "endpoint": "/programs",
+      "body": {
+        "id": "drop-in-gift-cards",
+        "name": "Drop-in Gift Cards",
+        "currency": "USD",
+        "discount": false,
+        "pretax": false,
+        "fixedInitialBalances": [
+          1000,
+          2500,
+          5000,
+          7500,
+          10000
+        ]
+      }
+    },
+    {
       "callId": "callId-LR_demo_id_1",
       "method": "POST",
       "endpoint": "/contacts",
@@ -585,7 +615,4 @@
     }
   ]
 }
-
-
-
 
