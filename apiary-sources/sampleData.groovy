@@ -7,7 +7,16 @@ File requests = new File("sampleData.json")
 
 def json = fetchTestDataFromFile(requests)
 
-String userJwt = "eyJ2ZXIiOjMsInZhdiI6MSwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJnIjp7Imd1aSI6InVzZXItYzBlNGJjODllYzcxNGU2MTk5MTk5ZTgzMjI0NTllMmUtVEVTVCIsImdtaSI6InVzZXItYzBlNGJjODllYzcxNGU2MTk5MTk5ZTgzMjI0NTllMmUtVEVTVCIsInRtaSI6InVzZXItYzBlNGJjODllYzcxNGU2MTk5MTk5ZTgzMjI0NTllMmUtVEVTVCJ9LCJhdWQiOiJBUElfS0VZIiwiaXNzIjoiU0VSVklDRVNfVjEiLCJpYXQiOjE1MzI0NTc3NDQuMjg5LCJqdGkiOiJiYWRnZS0zOThiNmM5ZmE1Yjg0ODM1OWQ2MWRmMmYzYmQ1YmZmYSIsInBhcmVudEp0aSI6ImJhZGdlLTVkYzU4NzI0MDVjNjQ4NjA4OWQ1ZDcyMmYxZDU2MzQwIiwic2NvcGVzIjpbXSwicm9sZXMiOlsiYWNjb3VudE1hbmFnZXIiLCJjb250YWN0TWFuYWdlciIsImN1c3RvbWVyU2VydmljZU1hbmFnZXIiLCJjdXN0b21lclNlcnZpY2VSZXByZXNlbnRhdGl2ZSIsInBvaW50T2ZTYWxlIiwicHJvZ3JhbU1hbmFnZXIiLCJwcm9tb3RlciIsInJlcG9ydGVyIiwic2VjdXJpdHlNYW5hZ2VyIiwidGVhbUFkbWluIiwid2ViUG9ydGFsIl19.tmP6yn05U1f5Wv5626MCNbz5aLyhw9Br5gLg00_6wzk"
+//This is the jwt used for the docs refresh script:
+//it can be used to test future updates if the requests are changed (otherwise IDs in requests will trigger idempotency failures)
+//String userJwt = "eyJ2ZXIiOjMsInZhdiI6MSwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJnIjp7Imd1aSI6InVzZXItYzBlNGJjODllYzcxNGU2MTk5MTk5ZTgzMjI0NTllMmUtVEVTVCIsImdtaSI6InVzZXItYzBlNGJjODllYzcxNGU2MTk5MTk5ZTgzMjI0NTllMmUtVEVTVCIsInRtaSI6InVzZXItYzBlNGJjODllYzcxNGU2MTk5MTk5ZTgzMjI0NTllMmUtVEVTVCJ9LCJhdWQiOiJBUElfS0VZIiwiaXNzIjoiU0VSVklDRVNfVjEiLCJpYXQiOjE1MzI0NTc3NDQuMjg5LCJqdGkiOiJiYWRnZS0zOThiNmM5ZmE1Yjg0ODM1OWQ2MWRmMmYzYmQ1YmZmYSIsInBhcmVudEp0aSI6ImJhZGdlLTVkYzU4NzI0MDVjNjQ4NjA4OWQ1ZDcyMmYxZDU2MzQwIiwic2NvcGVzIjpbXSwicm9sZXMiOlsiYWNjb3VudE1hbmFnZXIiLCJjb250YWN0TWFuYWdlciIsImN1c3RvbWVyU2VydmljZU1hbmFnZXIiLCJjdXN0b21lclNlcnZpY2VSZXByZXNlbnRhdGl2ZSIsInBvaW50T2ZTYWxlIiwicHJvZ3JhbU1hbmFnZXIiLCJwcm9tb3RlciIsInJlcG9ydGVyIiwic2VjdXJpdHlNYW5hZ2VyIiwidGVhbUFkbWluIiwid2ViUG9ydGFsIl19.tmP6yn05U1f5Wv5626MCNbz5aLyhw9Br5gLg00_6wzk"
+
+String userJwt = args[0]
+def environment = args[1]
+
+if (userJwt == "" || (environment != "prod" && environment != "staging" && environment != "dev")) {
+    throw new Exception("\n\nScript usage error: must run script with \n- API token as first argument \n- target environment as second argument (one of prod | staging | dev) \nExample: `groovy ./sampleData.groovy abc.def.ghi dev`\n")
+}
 
 Map calls = [:]
 for (Map call in json.calls) {
@@ -47,7 +56,7 @@ while (callsToDo) {
         }
 
         if (call.finishedReplacement) {
-            call.response = makeRequestAgainstLightrail(call, userJwt)
+            call.response = makeRequestAgainstLightrail(call, userJwt, environment)
         } else {
             call.response = [status: 424]
         }
@@ -56,26 +65,8 @@ while (callsToDo) {
     callsToDo = callsToDo.findAll { it.value.response.status != 200 && it.value.response.status != 201 }
 }
 
-//File outputDirectory = new File("generated/endpoints");
-//if (!outputDirectory.exists()) {
-//    println "creating output directory"
-//    outputDirectory.mkdirs();
-//}
-//
-//println "finished creating directory"
-
 def outputRequestJSON = new File("generated/requestsOutput.json")
 outputRequestJSON.write(JsonOutput.prettyPrint(JsonOutput.toJson(calls)));
-
-//for (file in filesToProcess) {
-//    String fileText = file.text
-//    fileText = checkForReplacements(fileText, calls, true) as String
-//    if (fileText.contains("REQUEST_REPLACEMENT")) {
-//        throw new Exception("File withname ${file.name} contains unreplaced text!!!")
-//    }
-//    def outputFile = new File("generated/endpoints/${file.name}")
-//    outputFile.write(fileText)
-//}
 
 static def checkForFunctionReplacements(def input) throws TestDataCallDependencyException {
     if (input instanceof Map) {
@@ -148,9 +139,11 @@ static def fetchTestDataFromFile(File file) {
     return slurper.parse(file)
 }
 
-def makeRequestAgainstLightrail(Map request, String userJwt) {
-    println "Making request: ${request}"
-    URLConnection connection = new URL("https://api.lightrailstaging.net/v2" + request.endpoint).openConnection();
+def makeRequestAgainstLightrail(Map request, String userJwt, String environment) {
+    println "Making request against: ${environment}"
+    println "Request: ${request}"
+    String url = getBaseUrl(environment) + request.endpoint
+    URLConnection connection = new URL(url).openConnection();
     connection.setDoOutput(true)
     connection.setRequestProperty("Content-Type", "application/json")
     connection.setRequestProperty("Authorization", "Bearer ${userJwt}")
@@ -192,6 +185,18 @@ class TestDataCallDependencyException extends Exception {
 
     TestDataCallDependencyException(String message) {
         super(message)
+    }
+}
+
+def getBaseUrl(String environment) {
+    if (environment == "prod") {
+        return "https://api.lightrail.com/v2"
+    }
+    if (environment == "staging") {
+        return "https://api.lightrailstaging.net/v2"
+    }
+    if (environment == "dev") {
+        return "https://api.lightraildev.net/v2"
     }
 }
 
